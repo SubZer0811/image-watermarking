@@ -1,0 +1,1 @@
+This file contains static elements and the images uploaded.
