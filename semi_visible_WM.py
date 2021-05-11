@@ -16,12 +16,13 @@ def semi_visible_WM(img, wm, alpha=0.5, pos='BR'):
 
 	return img
 
-img = cv2.imread("Lenna.png")
-wm = cv2.imread("watermark_T&J.jpg")
+if __name__ == "__main__":
+	img = cv2.imread("Lenna.png")
+	wm = cv2.imread("watermark_T&J.jpg")
 
-print(f'shape of img = {img.shape}')
-print(f'shape of wm = {wm.shape}')
-wm_img = semi_visible_WM(img, wm, pos='BR', alpha=0.5)
+	print(f'shape of img = {img.shape}')
+	print(f'shape of wm = {wm.shape}')
+	wm_img = semi_visible_WM(img, wm, pos='BR', alpha=0.5)
 
-cv2.imshow("img", wm_img)
-cv2.waitKey(0)
+	cv2.imshow("img", wm_img)
+	cv2.waitKey(0)
