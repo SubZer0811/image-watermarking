@@ -22,8 +22,8 @@ class semi_visible_pos_form(FlaskForm):
 	submit = SubmitField(label="Generate")
 
 @app.route('/')
-def semi_visible():
-	return render_template('semi_visible.html', img="static/out.png")
+def home():
+	return render_template('index.html', img="static/out.png")
 
 @app.route('/upload_image')
 def upload_image_form():
