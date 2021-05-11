@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-	<img src= "static/{{ image }}" id="image" style="cursor: pointer;"/>
-	<img src="static/{{ watermark }}">
+	<img src= "{{ image }}" id="image" style="cursor: pointer;"/>
+	<img src="{{ watermark }}">
 	<script>
 	document.getElementById('image').onclick = function clickEvent(e) {
 		// e = Mouse click event.
@@ -13,7 +13,7 @@
 		document.getElementById('y').value = y|0;
 	}
 	</script>
-	<form method="POST" action="/download_image">
+	<form method="POST" action="/sv_download_image">
 		{{ form.x.label() }}
 		{{ form.x }}
 		{{ form.y.label() }}

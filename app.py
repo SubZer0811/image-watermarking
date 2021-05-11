@@ -29,13 +29,13 @@ def return_files(name):
 
 @app.route('/')
 def home():
-	return render_template('index.html', img="static/out.png")
+	return render_template('index.html')
 
-@app.route('/upload_image')
+@app.route('/sv_upload_image')
 def upload_image_form():
-	return render_template('upload_image.html')
+	return render_template('semi-visible/upload_image.html')
 
-@app.route('/view_image', methods=['POST'])
+@app.route('/sv_view_image', methods=['POST'])
 def view_images():
 	if request.method == 'POST':
 		if request.files:
@@ -47,10 +47,10 @@ def view_images():
 			form = semi_visible_pos_form()
 			session['image'] = image.filename
 			session['watermark'] = watermark.filename
-			return render_template('view_image.html', image=image.filename, watermark=watermark.filename,
+			return render_template('semi-visible/view_image.html', image=f'static/{image.filename}', watermark=f'static/{watermark.filename}',
 									form=form)
 
-@app.route('/download_image', methods=['POST'])
+@app.route('/sv_download_image', methods=['POST'])
 def download_image():
 	print(request.form)
 	req = request.form
@@ -61,12 +61,12 @@ def download_image():
 	watermark = cv2.imread(f"static/{session['watermark']}")
 	wm_img = semi_visible_WM(image, watermark, pos=[int(req['x']), int(req['y'])])
 	cv2.imwrite('static/output1.png', wm_img)
-	return render_template("download_image.html", img='static/output1.png')
+	return render_template("semi-visible/download_image.html", img='static/output1.png')
 	
 
 @app.route('/checksum_watermarking')
 def checksum_upload_image_form():
-		return render_template('checksum/upload_image.html')
+	return render_template('checksum/upload_image.html')
 
 @app.route('/checksum_output', methods=['POST'])
 def checksum_download_image():
