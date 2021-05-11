@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+
+	<img src= "{{ img }}" id="image" style="cursor: pointer;"/>
+	
+	<script>
+	document.getElementById('image').onclick = function clickEvent(e) {
+		// e = Mouse click event.
+		var rect = e.target.getBoundingClientRect();
+		var x = e.clientX - rect.left; //x position within the element.
+		var y = e.clientY - rect.top;  //y position within the element.
+		console.log("Left? : " + x + " ; Top? : " + y + ".");
+	  }
+	</script>
+</html>

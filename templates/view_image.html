@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<img src= "static/{{ image }}" id="image" style="cursor: pointer;"/>
+	<img src="static/{{ watermark }}">
+	<script>
+	document.getElementById('image').onclick = function clickEvent(e) {
+		// e = Mouse click event.
+		var rect = e.target.getBoundingClientRect();
+		var y = e.clientX - rect.left; //x position within the element.
+		var x = e.clientY - rect.top;  //y position within the element.
+		console.log("Left? : " + x + " ; Top? : " + y + ".");
+		document.getElementById('x').value = x|0;
+		document.getElementById('y').value = y|0;
+	}
+	</script>
+	<form method="POST" action="/download_image">
+		{{ form.x.label() }}
+		{{ form.x }}
+		{{ form.y.label() }}
+		{{ form.y }}
+		{{ form.alpha.label() }}
+		{{ form.alpha(value=0.5) }}
+		{{ form.submit.label() }}
+		{{ form.submit }}
+	</form>
+</html>
