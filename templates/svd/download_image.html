@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+SVD based Watermarking
+{% endblock %}
+
+{% block content %}
+
+<br>
+<div style="text-align: center;">
+	<h1>SVD based Watermarking</h1>
+</div>
+<br><br>
+
+<div style="text-align:center;">
+	<h5>Watermarked Image</h5>
+	<img src="{{ img }}">
+	<br><br>
+	<a href="/download/image" target="blank">
+		<button class='btn btn-primary'>Download Image</button>
+	</a>
+	<br>
+	<br>
+</div>
+
+{% endblock %}

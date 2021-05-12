@@ -6,7 +6,7 @@ from flask.helpers import send_file
 from semi_visible_WM import semi_visible_WM
 from wtforms.fields.core import FloatField, StringField
 
-import invisible_checksum,invisible_watermarking,wavelet_watermarking
+import invisible_checksum, invisible_watermarking, wavelet_watermarking, svd_watermarking
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
@@ -158,12 +158,46 @@ def extract_wavelet_download_image():
 	if request.method == 'POST':
 		if request.files:
 			image = request.files['original_image']
-			key = request.files['watermarked_image']
+			watermarked_image = request.files['watermarked_image']
 			image.save(os.path.join('static', image.filename))
-			key.save(os.path.join('static', key.filename))
-			extracted_watermark=wavelet_watermarking.extract_watermark(f'static/{image.filename}',f'static/{key.filename}')
+			watermarked_image.save(os.path.join('static', watermarked_image.filename))
+			extracted_watermark=wavelet_watermarking.extract_watermark(f'static/{image.filename}',f'static/{watermarked_image.filename}')
 			session['image'] = extracted_watermark
 			return render_template('wavelet/download_extracted_watermark.html', img=extracted_watermark)
+
+@app.route('/svd_watermarking')
+def svd_upload_image_form():
+	return render_template('svd/upload_image.html')
+
+@app.route('/svd_watermarking_output', methods=['POST'])
+def svd_download_image():
+	if request.method == 'POST':
+		if request.files:
+			image = request.files['image']
+			watermark = request.files['watermark']
+			image.save(os.path.join('static', image.filename))
+			watermark.save(os.path.join('static', watermark.filename))
+			w_img=svd_watermarking.watermark(f'static/{image.filename}',f'static/{watermark.filename}')
+			session['image'] = w_img
+			return render_template('svd/download_image.html', img=w_img)
+
+@app.route('/svd_watermarking_extract')
+def extract_svd_upload_image_form():
+	return render_template('svd/upload_image_to_extract.html')
+
+@app.route('/svd_extracted_watermark', methods=['POST'])
+def extract_svd_download_image():
+	if request.method == 'POST':
+		if request.files:
+			image = request.files['original_image']
+			watermark = request.files['original_watermark']
+			watermarked_image = request.files['watermarked_image']
+			image.save(os.path.join('static', image.filename))
+			watermark.save(os.path.join('static', watermark.filename))
+			watermarked_image.save(os.path.join('static', watermarked_image.filename))
+			extracted_watermark=svd_watermarking.extract_watermark(f'static/{image.filename}',f'static/{watermark.filename}',f'static/{watermarked_image.filename}')
+			session['image'] = extracted_watermark
+			return render_template('svd/download_extracted_watermark.html', img=extracted_watermark)
 
 if __name__ == '__main__':
 	app.run()
