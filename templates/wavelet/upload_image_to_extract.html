@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+Wavelet Watermarking
+{% endblock %}
+
+{% block content %}
+	<div style="text-align: center;">
+		<h1>Wavelet Watermarking</h1>
+	</div>
+	<form method="POST" action="/wavelet_extracted_watermark" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-md-6">
+				<h2><span for="image">Original Image</span></h2>
+				<input class="form-control form-control-lg" name="original_image" type="file" required>
+			</div>
+			<div class="col-md-6">
+				<h2><span for="image">Watermarked Image</span></h2>
+				<input class="form-control form-control-lg" name="watermarked_image" type="file" required>
+			</div>
+		</div>
+		<br>
+		<div class="d-grid gap-2">
+				<button type="submit" name="submit" class="btn btn-primary block">Next -></button>
+		</div>
+	</form>
+
+{% endblock %}

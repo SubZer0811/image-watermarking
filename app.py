@@ -6,7 +6,7 @@ from flask.helpers import send_file
 from semi_visible_WM import semi_visible_WM
 from wtforms.fields.core import FloatField, StringField
 
-import invisible_checksum,invisible_watermarking
+import invisible_checksum,invisible_watermarking,wavelet_watermarking
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
@@ -132,6 +132,38 @@ def extract_invisible_download_image():
 			extracted_watermark=invisible_watermarking.extract_watermark(f'static/{image.filename}',f'static/{key.filename}')
 			session['image'] = extracted_watermark
 			return render_template('invisible/download_extracted_watermark.html', img=extracted_watermark)
+
+@app.route('/wavelet_watermarking')
+def wavelet_upload_image_form():
+	return render_template('wavelet/upload_image.html')
+
+@app.route('/wavelet_watermarking_output', methods=['POST'])
+def wavelet_download_image():
+	if request.method == 'POST':
+		if request.files:
+			image = request.files['image']
+			watermark = request.files['watermark']
+			image.save(os.path.join('static', image.filename))
+			watermark.save(os.path.join('static', watermark.filename))
+			w_img=wavelet_watermarking.watermark(f'static/{image.filename}',f'static/{watermark.filename}')
+			session['image'] = w_img
+			return render_template('wavelet/download_image.html', img=w_img)
+
+@app.route('/wavelet_watermarking_extract')
+def extract_wavelet_upload_image_form():
+	return render_template('wavelet/upload_image_to_extract.html')
+
+@app.route('/wavelet_extracted_watermark', methods=['POST'])
+def extract_wavelet_download_image():
+	if request.method == 'POST':
+		if request.files:
+			image = request.files['original_image']
+			key = request.files['watermarked_image']
+			image.save(os.path.join('static', image.filename))
+			key.save(os.path.join('static', key.filename))
+			extracted_watermark=wavelet_watermarking.extract_watermark(f'static/{image.filename}',f'static/{key.filename}')
+			session['image'] = extracted_watermark
+			return render_template('wavelet/download_extracted_watermark.html', img=extracted_watermark)
 
 if __name__ == '__main__':
 	app.run()
