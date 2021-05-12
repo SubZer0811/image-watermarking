@@ -60,7 +60,7 @@ def watermark(img_file,wm_file):
 
 	return watermarked_file,key_file
 
-def extract_watermark(img_file,key_file,threshold=0.8):
+def extract_watermark(img_file,key_file):
 
 	img = cv2.imread(img_file)
 	height,width=img.shape[0],img.shape[1]
