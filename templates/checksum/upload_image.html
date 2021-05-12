@@ -1,7 +1,29 @@
-<!DOCTYPE html>
-<html>
-	<form method="POST" action="/checksum_output" enctype="multipart/form-data">
-		<input type="file" name="image" required>
-		<input type="submit" name="submit">
-	</form>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+Checksum based Watermarking
+{% endblock %}
+
+{% block content %}
+
+	<!-- <form method="POST" action="/checksum_output" enctype="multipart/form-data"> -->
+		<!-- <input type="file" name="image" required> -->
+		<!-- <input type="submit" name="submit"> -->
+	<!-- </form> -->
+
+<div style="text-align: center;">
+	<h1>Checksum based Watermarking</h1>
+</div>
+<form method="POST" action="/checksum_output" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-md-12">
+			<h2><span for="image">Input Image</span></h2>
+			<input class="form-control form-control-lg" name="image" type="file" required>
+		</div>
+	</div>
+	<br>
+	<div class="d-grid gap-2">
+			<button type="submit" name="submit" class="btn btn-primary block">Next -></button>
+	</div>
+</form>
+
+{% endblock %}

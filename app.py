@@ -87,7 +87,7 @@ def checksum_download_image():
 def verify_checksum_upload_image_form():
 	return render_template('checksum/upload_image_to_extract.html')
 
-@app.route('/invisible_extracted_watermark', methods=['POST'])
+@app.route('/checksum_verificatiom', methods=['POST'])
 def verify_checksum_output():
 	if request.method == 'POST':
 		if request.files:
@@ -95,10 +95,10 @@ def verify_checksum_output():
 			key = request.files['key']
 			image.save(os.path.join('static', image.filename))
 			key.save(os.path.join('static', key.filename))
-			message = "the image is not authentic"
+			output = "static/assets/fake.png"
 			if invisible_checksum.check_watermark(f'static/{image.filename}',f'static/{key.filename}'):
-				message = "the image is authentic"
-			return render_template('checksum/verify_checksum_output.html',message=message)
+				output = "static/assets/original.png"
+			return render_template('checksum/verify_checksum_output.html',output=output)
 
 @app.route('/invisible_watermarking')
 def invisible_upload_image_form():

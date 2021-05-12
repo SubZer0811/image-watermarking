@@ -1,1 +1,12 @@
-{{ message }}
+{% extends 'base.html' %}
+{% block title %}
+Checksum based Watermarking
+{% endblock %}
+
+{% block content %}
+	<div style="text-align: center;">
+		<h1>Checksum based Watermarking</h1>
+	</div>
+	<br>
+	<img src="{{output}}" width="50%" class="center" >
+{% endblock %}
