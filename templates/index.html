@@ -13,25 +13,29 @@ Watermark - Home
 				<div class="card-body">
 					<h5 class="card-title">Semi-Visible Watermarking</h5>
 					<p class="card-text">This type of watermarking embeds a visible watermark whose transperency can be altered.</p>
-					<a href="{{ url_for('upload_image_form') }}" class="btn btn-primary d-grid gap-2">Click here!</a>
+					<a href="{{ url_for('upload_image_form') }}" class="btn btn-primary d-grid gap-2">Watermark an Image</a>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Special title treatment</h5>
-					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
+					<h5 class="card-title">Invisible Watermarking</h5>
+					<p class="card-text">This type of watermarking embeds an image (watermark) in a larger image in a way it is not visible. The watermark cacn be extracted using the watermarked image and the key.</p>
+					<a href="{{ url_for('invisible_upload_image_form') }}" class="btn btn-primary d-grid gap-2">Watermark an Image</a>
+					<br>
+					<a href="{{ url_for('extract_invisible_upload_image_form') }}" class="btn btn-primary d-grid gap-2">Extract Watermark</a>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Special title treatment</h5>
-					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
+					<h5 class="card-title">Checksum based Watermarking</h5>
+					<p class="card-text">This type of watermarking generates a 56 bit checksum which is stored in LSBs of randomly chosen locations. This watermarking technique is used to verify the authenticity of an image.</p>
+					<a href="{{ url_for('checksum_upload_image_form') }}" class="btn btn-primary d-grid gap-2">Watermark an Image</a>
+					<br>
+					<a href="{{ url_for('verify_checksum_upload_image_form') }}" class="btn btn-primary d-grid gap-2">Check Authenticity of Image</a>
 				</div>
 			</div>
 		</div>
