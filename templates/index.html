@@ -5,38 +5,36 @@ Watermark - Home
 
 {% block content %}
 
-<div class="row align-items-start">
-	<div class="col"></div>
-	<div>
-		<div class="col card text-center"">
-			<div class="card-body">
-				<h5 class="card-title">Semi-visible watermarking</h5>
-				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
-	</div>
-	<div class="col"></div>
-	<div>
-		<div class="card text-center">
-			<div class="card-body">
-				<h5 class="card-title">Special title treatment</h5>
-				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
-	</div>
-	<div class="col"></div>
-	<div>
-		<div class="card text-center">
-			<div class="card-body">
-				<h5 class="card-title">Special title treatment</h5>
-				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
-	</div>
-	<div class="col"></div>
-</div>
 
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Semi-Visible Watermarking</h5>
+					<p class="card-text">This type of watermarking embeds a visible watermark whose transperency can be altered.</p>
+					<a href="{{ url_for('upload_image_form') }}" class="btn btn-primary d-grid gap-2">Click here!</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Special title treatment</h5>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Special title treatment</h5>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

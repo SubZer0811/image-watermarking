@@ -1,26 +1,58 @@
-<!DOCTYPE html>
-<html>
-	<img src= "{{ image }}" id="image" style="cursor: pointer;"/>
-	<img src="{{ watermark }}">
-	<script>
-	document.getElementById('image').onclick = function clickEvent(e) {
-		// e = Mouse click event.
-		var rect = e.target.getBoundingClientRect();
-		var y = e.clientX - rect.left; //x position within the element.
-		var x = e.clientY - rect.top;  //y position within the element.
-		console.log("Left? : " + x + " ; Top? : " + y + ".");
-		document.getElementById('x').value = x|0;
-		document.getElementById('y').value = y|0;
-	}
-	</script>
+{% extends 'base.html' %}
+{% block title %}
+Semi-Visible Watermarking
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+	<h1>Semi-visible Watermarking</h1>
+	<h5>Click on the input image to set the top left coordinate of the watermark.</h5>
+</div>
+<br><br>
+<div class="row">
+	<div class="col-8">
+		<img src="{{ image }}" style="max-width:100%; height:auto; cursor: pointer;" class="rounded col" id="image">
+		<br><h2><span for="image">Input Image</span></h2>
+	</div>
+	<div class="col-auto" style="vertical-align: bottom;">
+		<img src="{{ watermark }}" class="rounded" id="watermark">
+		<br><h2><span for="watermark">Watermark</span></h2>
+	</div>
+</div>
+	<!-- <img src= "{{ image }}" id="image" style="cursor: pointer;"/>
+	<img src="{{ watermark }}"> -->
+	<br><br>
 	<form method="POST" action="/sv_download_image">
-		{{ form.x.label() }}
-		{{ form.x }}
-		{{ form.y.label() }}
-		{{ form.y }}
-		{{ form.alpha.label() }}
-		{{ form.alpha(value=0.5) }}
-		{{ form.submit.label() }}
-		{{ form.submit }}
+		<div class="row">
+			<div class="col-4">
+				<h5><span>x-coordinate of watermark position</span></h5>
+				{{ form.x(class="form-control") }}
+			</div>
+			<!-- {{ form.y.label() }} -->
+			<div class="col-4">
+				<h5><span>y-coordinate of watermark position</span></h5>
+				{{ form.y(class="form-control") }}
+			</div>
+			<!-- {{ form.alpha.label() }} -->
+			<div class="col-4">
+				<h5><span>Aplha value</span></h5>
+				{{ form.alpha(class="form-control", value=0.5) }}
+			</div>
+			<div class="d-grid gap-2">
+				{{ form.submit.label() }}
+				{{ form.submit(class="btn btn-primary block") }}
+			</div>
+		</div>
 	</form>
-</html>
+	<script>
+		document.getElementById('image').onclick = function clickEvent(e) {
+			// e = Mouse click event.
+			var rect = e.target.getBoundingClientRect();
+			var y = e.clientX - rect.left; //x position within the element.
+			var x = e.clientY - rect.top;  //y position within the element.
+			console.log("Left? : " + x + " ; Top? : " + y + ".");
+			document.getElementById('x').value = x|0;
+			document.getElementById('y').value = y|0;
+		}
+	</script>
+{% endblock %}

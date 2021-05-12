@@ -23,9 +23,13 @@ class semi_visible_pos_form(FlaskForm):
 	alpha = FloatField(label="alpha", id='alpha')
 	submit = SubmitField(label="Generate")
 
+@app.route('/download_file/<name>')
+def file_respond(name):
+	return send_file(f'static/{name}', as_attachment=True)
+
 @app.route('/download/<name>')
 def return_files(name):
-	return send_file(session[name])
+	return send_file(session[name], as_attachment=True)
 
 @app.route('/')
 def home():
@@ -59,9 +63,9 @@ def download_image():
 
 	image = cv2.imread(f"static/{session['image']}")
 	watermark = cv2.imread(f"static/{session['watermark']}")
-	wm_img = semi_visible_WM(image, watermark, pos=[int(req['x']), int(req['y'])])
-	cv2.imwrite('static/output1.png', wm_img)
-	return render_template("semi-visible/download_image.html", img='static/output1.png')
+	wm_img = semi_visible_WM(image, watermark, pos=[int(req['x']), int(req['y'])], alpha=float(req['alpha']))
+	cv2.imwrite('static/output.png', wm_img)
+	return render_template("semi-visible/download_image.html", img='output.png')
 	
 
 @app.route('/checksum_watermarking')
