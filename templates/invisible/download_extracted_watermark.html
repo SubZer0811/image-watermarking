@@ -1,5 +1,24 @@
-<html>
-	<img src="{{ img }}" >
+{% extends 'base.html' %}
+{% block title %}
+Invisible Watermarking
+{% endblock %}
+
+{% block content %}
+
+<div style="text-align: center;">
+	<h1>Invisible Watermarking</h1>
+</div>
+<br><br>
+
+<div style="text-align:center;">
+	<h5>Watermarked Image</h5>
+	<img src="{{ img }}">
+	<br><br>
+	<a href="/download/image" target="blank">
+		<button class='btn btn-primary'>Download Image</button>
+	</a>
 	<br>
-	<a href="/download/image" target="blank"><button class='btn btn-default'>download</button></a>
-</html>
+	<br>
+</div>
+
+{% endblock %}
