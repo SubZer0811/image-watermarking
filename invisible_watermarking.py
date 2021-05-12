@@ -84,7 +84,7 @@ def extract_watermark(img_file,key_file,threshold=0.8):
 	path=os.path.splitext(img_file)
 	extracted_watermark=f'{path[0]}-extracted_watermark{path[1]}'
 	cv2.imwrite(extracted_watermark,wm)
-	print(f'extracted watermarked image saved as {extracted_watermark}')
+	print(f'extracted watermark saved as {extracted_watermark}')
 
 	return extracted_watermark
 
