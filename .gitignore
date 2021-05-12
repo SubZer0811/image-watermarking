@@ -1,4 +1,6 @@
 static/*
+!static/README.md
+!static/assets/
 __pycache__/*
 .vscode/
 testing/*
