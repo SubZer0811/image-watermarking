@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import numpy as np, cv2, sys, os
+import numpy as np, cv2, os
 from random import randrange,seed
 from time import time
 
@@ -81,12 +81,16 @@ def extract_watermark(img_file,key_file,threshold=0.8):
 
 	wm*=64
 
-	cv2.imwrite('static/extracted_watermark.png',wm)
-	print('extracted watermarked image saved as extracted_watermark.png')
+	path=os.path.splitext(img_file)
+	extracted_watermark=f'{path[0]}-extracted_watermark{path[1]}'
+	cv2.imwrite(extracted_watermark,wm)
+	print(f'extracted watermarked image saved as {extracted_watermark}')
 
-	return 'static/extracted_watermark.png'
+	return extracted_watermark
 
 if __name__ == '__main__':
+
+	import sys
 
 	op=[]
 	for i in sys.argv:
@@ -99,7 +103,7 @@ if __name__ == '__main__':
 	if argc!=3 or len(op)>1 or op[0] not in ['-w','-e']:
 
 		print(f'{sys.argv[0]}: invalid usage',file=sys.stderr)
-		print(f'correct usage:\n{sys.argv[0]} -w image watermark\n\t> for watermarking (or)\n{sys.argv[0]} -e image watermark-key\n\t> for extracting watermark',file=sys.stderr)
+		print(f'correct usage:\n{sys.argv[0]} -w image watermark\n\t> for watermarking (or)\n{sys.argv[0]} -e watermarked_image watermark-key\n\t> for extracting watermark',file=sys.stderr)
 		sys.exit(1)
 
 	elif op[0]=='-w':

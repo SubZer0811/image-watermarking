@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import numpy as np, cv2, sys, os
+import numpy as np, cv2, os
 from random import randrange,seed
 from time import time
 
@@ -127,6 +127,8 @@ def check_watermark(img_file,key_file,threshold=0.8):
 	return False
 
 if __name__ == '__main__':
+
+	import sys
 
 	argc=len(sys.argv)
 
