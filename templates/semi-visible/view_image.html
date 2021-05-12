@@ -8,15 +8,15 @@ Semi-Visible Watermarking
 	<h1>Semi-visible Watermarking</h1>
 	<h5>Click on the input image to set the top left coordinate of the watermark.</h5>
 </div>
-<br><br>
+<br>
 <div class="row">
 	<div class="col-8">
-		<img src="{{ image }}" style="max-width:100%; height:auto; cursor: pointer;" class="rounded col" id="image">
 		<br><h2><span for="image">Input Image</span></h2>
+		<img src="{{ image }}" style="max-width:100%; height:auto; cursor: pointer;" class="rounded col" id="image">
 	</div>
 	<div class="col-auto" style="vertical-align: bottom;">
-		<img src="{{ watermark }}" class="rounded" id="watermark">
 		<br><h2><span for="watermark">Watermark</span></h2>
+		<img src="{{ watermark }}" class="rounded" id="watermark">
 	</div>
 </div>
 	<!-- <img src= "{{ image }}" id="image" style="cursor: pointer;"/>
@@ -39,7 +39,8 @@ Semi-Visible Watermarking
 				{{ form.alpha(class="form-control", value=0.5) }}
 			</div>
 			<div class="d-grid gap-2">
-				{{ form.submit.label() }}
+				<!-- {{ form.submit.label() }} -->
+				<br>
 				{{ form.submit(class="btn btn-primary block") }}
 			</div>
 		</div>

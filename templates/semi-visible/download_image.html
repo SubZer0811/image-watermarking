@@ -4,20 +4,22 @@ Semi-Visible Watermarking
 {% endblock %}
 
 {% block content %}
-	<div style="text-align: center;">
-		<h1>Semi-visible Watermarking</h1>
-	</div>
+
+<br>
+<div style="text-align: center;">
+	<h1>Semi-visible Watermarking</h1>
+</div>
+<br><br>
+
+<div style="text-align:center;">
+	<h5>Watermarked Image</h5>
+	<img src="static/{{ img }}" >
 	<br><br>
-	
-	<div style="text-align:center;">
-		<h5>Watermarked Image</h5>
-		<img src="static/{{ img }}" >
-		<br><br>
-		<a href="/download_file/{{ img }}" target="blank">
-			<button class='btn btn-primary'>Download Image</button>
-		</a>
-		<br>
-		<br>
-	</div>
+	<a href="/download_file/{{ img }}" target="blank">
+		<button class='btn btn-primary'>Download Image</button>
+	</a>
+	<br>
+	<br>
+</div>
 
 {% endblock %}

@@ -4,24 +4,28 @@ Invisible Watermarking
 {% endblock %}
 
 {% block content %}
-	<div style="text-align: center;">
-		<h1>Invisible Watermarking</h1>
+<br>
+<div style="text-align: center;">
+	<h1>Invisible Watermarking - Watermark an Image</h1>
+</div>
+<br><br>
+<form method="POST" action="/invisible_watermarking_output" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-md-6">
+			<h2><span for="image">Input Image</span></h2>
+			<br>
+			<input class="form-control form-control-lg" name="image" type="file" required>
+		</div>
+		<div class="col-md-6">
+			<h2><span for="image">Watermark</span></h2>
+			<br>
+			<input class="form-control form-control-lg" name="watermark" type="file" required>
+		</div>
 	</div>
-	<form method="POST" action="/invisible_watermarking_output" enctype="multipart/form-data">
-		<div class="row">
-			<div class="col-md-6">
-				<h2><span for="image">Input Image</span></h2>
-				<input class="form-control form-control-lg" name="image" type="file" required>
-			</div>
-			<div class="col-md-6">
-				<h2><span for="image">Watermark</span></h2>
-				<input class="form-control form-control-lg" name="watermark" type="file" required>
-			</div>
-		</div>
-		<br>
-		<div class="d-grid gap-2">
-				<button type="submit" name="submit" class="btn btn-primary block">Next -></button>
-		</div>
-	</form>
+	<br>
+	<div class="d-grid gap-2">
+			<button type="submit" name="submit" class="btn btn-primary block">Next -></button>
+	</div>
+</form>
 
 {% endblock %}
