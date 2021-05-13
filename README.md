@@ -9,6 +9,8 @@ Project done for the Digital Image Processing course in IIITDM Kancheepuram, Jan
 * Watermarking in Wavelet Domain
 * Watermarking in SVD Domain
 
+### The app has been hosted [here](https://dip-image-watermarking.herokuapp.com/).
+
 ### Done by 
 
 * __[Subash Mylraj](https://github.com/SubZer0811)__
